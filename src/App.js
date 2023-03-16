@@ -1,9 +1,7 @@
-function App() {
+const App = () => {
   return (
-    <div>
-      <h2>さーhじめよう</h2>
-    </div>
-  );
-}
+    <h2>Hello World</h2>
+  )
+};
 
 export default App;
