@@ -23,10 +23,12 @@ const App = () => {
     },
   ];
 
+  const items = expenses.map((item) => <ExpenseItem expense={item} />);
+
   return (
     <div>
       <h2>Expense Calculator</h2>
-      <ExpenseItem expense={expenses[0]} />
+      {items}
     </div>
   );
 };
