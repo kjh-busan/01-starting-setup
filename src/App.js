@@ -1,9 +1,12 @@
 const App = () => {
-  const para = document.createElement('p');
-  para.textContent = 'This is also visible';
-  document.getElementById('root').append(para);
+  // const para = document.createElement('p');
+  // para.textContent = 'This is also visible';
+  // document.getElementById('root').append(para);
   return (
-    <h2>Hello World</h2>
+    <div>
+      <h2>Hello World</h2>
+      <p>this is also visible jsx</p>
+    </div>
   )
 };
 
