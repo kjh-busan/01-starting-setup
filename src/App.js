@@ -23,7 +23,16 @@ const App = () => {
     },
   ];
 
-  const items = expenses.map((item) => <ExpenseItem expense={item} />);
+  const items = expenses.map((item) => {
+    return (
+      <ExpenseItem
+        key={item.id}
+        title={item.title}
+        amount={item.amount}
+        date={item.date}
+      />
+    );
+  });
 
   return (
     <div>
