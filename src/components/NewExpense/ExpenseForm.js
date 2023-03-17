@@ -12,36 +12,33 @@ const ExpenseForm = () => {
   });
 
   const titleChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
     });
-    // setEnteredTitle(event.target.value);
   };
 
   const amoutChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredAmount: event.target.value };
     });
-    // setEnteredAmount(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
+    setUserInput((prevState) => {
+      return { ...prevState, enteredDate: event.target.value };
     });
-    // setEnteredDate(event.target.value);
   };
 
   const onSubmitHandler = (event) => {
-    console.log(userInput);
-    // alert(userInput);
+    event.preventDefault();
+  };
+
+  const sendUserInput = (event) => {
+    console.log("userInput : ", userInput);
   };
 
   return (
-    <form>
+    <form onSubmit={onSubmitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -67,7 +64,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit" onSubmit={onSubmitHandler}>
+        <button type="submit" onClick={sendUserInput}>
           Add Expense
         </button>
       </div>
