@@ -20,10 +20,10 @@ const Expenses = (props) => {
   };
 
   return (
-    <>
-      <ExpensesFilter onselectExpenseFilter={selectFilterHandler} />
-      <Card className="expenses">{expenses}</Card>
-    </>
+    <Card className="expenses">
+      <ExpensesFilter onselectExp onselectExpenseFilter={selectFilterHandler} />
+      {expenses}
+    </Card>
   );
 };
 
