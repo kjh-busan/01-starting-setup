@@ -1,6 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "./Expenses.css";
+import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
   const expenses = props.items.map((item) => {
@@ -13,7 +14,17 @@ const Expenses = (props) => {
       />
     );
   });
-  return <Card className="expenses">{expenses}</Card>;
+
+  const selectFilterHandler = (expenseFilter) => {
+    console.log("expenseFilter = " + expenseFilter);
+  };
+
+  return (
+    <>
+      <ExpensesFilter onselectExpenseFilter={selectFilterHandler} />
+      <Card className="expenses">{expenses}</Card>
+    </>
+  );
 };
 
 export default Expenses;
