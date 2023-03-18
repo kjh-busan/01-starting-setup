@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-
+import AddNewExpense from "./components/NewExpense/AddNewExpense";
 const DUMMY_EXPENSES = [
   {
     id: "e1",
@@ -26,16 +26,30 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [cancelState, setCancelState] = useState(false);
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
   };
+  const cancelButtonHandler = (_cancelState) => {
+    setCancelState(_cancelState);
+    console.log("App.js cancelState = ", _cancelState);
+  };
+  let newExpense = <AddNewExpense />;
+  if (cancelState) {
+    newExpense = (
+      <NewExpense
+        onCancelButton={cancelButtonHandler}
+        onAddExpense={addExpenseHandler}
+      />
+    );
+  }
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      {newExpense}
       <Expenses items={expenses} />
     </div>
   );

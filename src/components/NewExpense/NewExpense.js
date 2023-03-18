@@ -10,10 +10,16 @@ const NewExpense = (props) => {
     };
     props.onAddExpense(expenseData);
   };
+  const ChangeCancelHandler = (_cancelState) => {
+    props.onCancelButton(_cancelState);
+  };
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={SaveExpenseDataHandler} />
+      <ExpenseForm
+        onChangeCancel={ChangeCancelHandler}
+        onSaveExpenseData={SaveExpenseDataHandler}
+      />
     </div>
   );
 };
