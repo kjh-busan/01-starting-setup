@@ -22,7 +22,11 @@ const ExpensesFilter = (props) => {
     "2025",
   ];
   const optionValues = optionValuesArray.map((year) => {
-    return <option value={year}>{year}</option>;
+    return (
+      <option key={year} value={year}>
+        {year}
+      </option>
+    );
   });
 
   return (

@@ -35,6 +35,7 @@ const ExpenseForm = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault(); // event중지
+    if (enteredTitle && enteredAmount && enteredDate) return;
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,
