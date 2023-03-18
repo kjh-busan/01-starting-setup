@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
-const expenses = [
+const DUMMY_EXPENSES = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -25,19 +25,21 @@ const expenses = [
 ];
 
 const App = () => {
-  const [expensesProps, setExpensesProps] = useState(expenses);
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  console.log("DUMMY_EXPENSES1 : ", DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
-    console.log(expense);
-    setExpensesProps(() => {
-      return { ...expenses, expense };
+    // setExpenses([expense, ...expenses]);
+    // console.log("DUMMY_EXPENSES2 : ", DUMMY_EXPENSES);
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
     });
   };
 
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expensesProps} />
+      <Expenses items={expenses} />
     </div>
   );
 };
