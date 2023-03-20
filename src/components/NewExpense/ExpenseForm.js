@@ -6,46 +6,26 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [isError, setIsError] = useState(false);
-  // 다른방법
-  // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
-  // });
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredTitle: event.target.value };
-    // });
   };
 
   const amoutChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredAmount: event.target.value };
-    // });
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    // setUserInput((prevState) => {
-    //   return { ...prevState, enteredDate: event.target.value };
-    // });
   };
 
-  const isErrorMsg = () => {
-    let msg = !enteredTitle.trim().length > 0 && <h2>Title Error</h2>;
-    msg += !enteredAmount > 0.01 && <h2>Amount Error</h2>;
-
-    return msg;
-  };
   const onSubmitHandler = (event) => {
     event.preventDefault(); // event중지
-    // if (enteredTitle && enteredAmount && enteredDate) return;
-    // console.log(new Date(enteredDate).getFullYear().toString());
+    if (!enteredTitle.trim().length > 0 || !enteredAmount > 0.01) {
+      setIsError(true);
+      return;
+    }
 
-    if (isErrorMsg(event)) return;
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,
@@ -90,7 +70,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        {isErrorMsg}
+        {isError && <h2>plz Input</h2>}
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
